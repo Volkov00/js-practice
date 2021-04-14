@@ -102,8 +102,7 @@ class FaculAndDeportament {
 const universityInformation = new FaculAndDeportament(
   "Юридический",
   "административного и уголовного права"
-); // в переменную записывает клас и передаем эту переменную студенту уже с параметрами.
-
+);
 let student = new Student(
   "Oswald",
   "Cobald",
@@ -129,7 +128,7 @@ console.log(randomArr);
 
 function indexArr(arr) {
   let newIndexArr = [];
-  arr.forEach(function (item,index) {
+  arr.forEach(function (item, index) {
     if (index % 2 === 0) {
       newIndexArr.push(item);
     }
@@ -138,16 +137,15 @@ function indexArr(arr) {
 }
 console.log(indexArr(randomArr));
 
-
 // 3.3
 
-function itemArr (myAr){
+function itemArr(myAr) {
   let newItemArr = [];
-  myAr.forEach(function(item){
-    if(item %2 === 0){
+  myAr.forEach(function (item) {
+    if (item % 2 === 0) {
       newItemArr.push(item);
     }
-  })
+  });
   return newItemArr;
 }
 
@@ -155,16 +153,15 @@ console.log(itemArr(randomArr));
 
 // 3.4
 
-function itemZero (zero){
+function itemZero(zero) {
   let newItemZero = [];
-  zero.forEach(function(item,index){
-    if(item === 0){
+  zero.forEach(function (item, index) {
+    if (item === 0) {
       newItemZero.push(index);
     }
-  })
+  });
   return newItemZero;
 }
-
 
 // 3.5
 let finalZeroIndex = itemZero(randomArr);
@@ -174,10 +171,11 @@ console.log(finalZeroIndex.length);
 // Task 4 ==============================================>
 
 class Book {
-  constructor(author, year,publishingOffice){
+  constructor(author, title, year, publishInOffice) {
     this.author = author;
+    this.title = title;
     this.year = year;
-    this.publishingOffice = publishingOffice;
+    this.publishInOffice = publishInOffice;
   }
   get author() {
     return this._author;
@@ -188,4 +186,91 @@ class Book {
     }
     this._author = author;
   }
+  get title() {
+    return this.title;
+  }
+  set title(title) {
+    if (typeof title !== "string") {
+      throw new TypeError("Only Text");
+    }
+    this._title = title;
+  }
+  get year() {
+    return this._year;
+  }
+  set year(year) {
+    if (typeof year !== "number") {
+      throw new TypeError("only number");
+    }
+    this._year = year;
+  }
+  get publishInOffice() {
+    return this._publishInOffice;
+  }
+  set publishInOffice(publishInOffice) {
+    if (typeof publishInOffice !== "string") {
+      throw new TypeError("Only string");
+    }
+    this._publishInOffice = publishInOffice;
+  }
 }
+
+class Ebook extends Book {
+  constructor(author, title, year, publishInOffice, format, eNumber) {
+    super(author, title, year, publishInOffice);
+    this.format = format;
+    this.eNumber = eNumber;
+  }
+  get format() {
+    return this._format;
+  }
+  set format(format) {
+    if (typeof format !== "string") {
+      throw new TypeError("Only string");
+    }
+    this._format = format;
+  }
+  get eNumber() {
+    return this._eNumber;
+  }
+  set eNumber(eNumber) {
+    if (typeof eNumber !== "number") {
+      throw new TypeError("Only Number");
+    }
+    this._eNumber = eNumber;
+  }
+}
+
+const book = new Book("Фрэнк Гербер", "Дюна", 1965, "Chilton Books");
+const ebook = new Ebook(
+  "Фрэнк Гербер",
+  "Дюна",
+  1965,
+  "Chilton Books",
+  "FB2",
+  5457231
+);
+console.log(book);
+console.log(ebook);
+
+// Task 5===================================================>
+
+function fizzbuzz(n) {
+  for (let i = 1; i < n; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      console.log(i + "fizzbuzz");
+    }
+    if (i % 3 === 0) {
+      console.log(i + "fizz");
+    }
+    if (i % 5 === 0) {
+      console.log(i + "buzz");
+    } else {
+      console.log(i);
+    }
+  }
+  return n;
+}
+fizzbuzz(15);
+
+//=============================================================>
